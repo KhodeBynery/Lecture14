@@ -10,6 +10,7 @@ function CounterController($scope) {
   $scope.onceCounter = 0;
   //Declare another property
   $scope.counter = 0;
+  $scope.name = "Yaakov";
 
   $scope.showNumberOfWatchers = function () {
  //Log the scope service
@@ -23,18 +24,23 @@ function CounterController($scope) {
 
   $scope.upCounter = function () {
     $scope.counter++;
-  }
+  };
 
-  $scope.$watch('onceCounter', function (newValue, oldValue) {
-    console.log("onceCounter old value: ", oldValue);
-    console.log("onceCounter new value: ", newValue);
-  });
+  //Digest loop, one of the watchers
+  $scope.$watch( function () {
+    console.log("Digest Loop Fired!")
+  })
 
-  //Watch for our counter property
-  $scope.$watch('counter', function (newValue, oldValue) {
-    console.log("counter old value: ", oldValue);
-    console.log("counter new value: ", newValue);
-  });
+  // $scope.$watch('onceCounter', function (newValue, oldValue) {
+  //   console.log("onceCounter old value: ", oldValue);
+  //   console.log("onceCounter new value: ", newValue);
+  // });
+  //
+  // //Watch for our counter property
+  // $scope.$watch('counter', function (newValue, oldValue) {
+  //   console.log("counter old value: ", oldValue);
+  //   console.log("counter new value: ", newValue);
+  // });
 }
 
 })();
